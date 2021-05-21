@@ -1,13 +1,25 @@
-<h3><%= @list.name %> </h3>
-<p><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></p>
-<p><%= link_to "Home", root_path %></p>
-<ol>
-   <% @bookmarks.each do |bookmark| %>
-   <li><%= bookmark.movie.title %>
-    <%= link_to "Delete",
-            bookmark_path(bookmark),
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9021f37b-8c7c-4ce7-8184-5202648f77bd/d8j17be-1bf1f7c6-73e1-4c2c-b0f1-cac3233ecd0f.jpg/v1/fill/w_1024,h_584,q_75,strp/cinema_background_by_gazlan_sahmeiy_d8j17be-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTg0IiwicGF0aCI6IlwvZlwvOTAyMWYzN2ItOGM3Yy00Y2U3LTgxODQtNTIwMjY0OGY3N2JkXC9kOGoxN2JlLTFiZjFmN2M2LTczZTEtNGMyYy1iMGYxLWNhYzMyMzNlY2QwZi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.9LRVRiig7M71_U63QWn0EpmA9TvsG_5WkIoZFYa9ltc);">
+  <div class="container">
+    <h1><strong><%= @list.name %></strong></h1>
+    <h3 class="btn btn-flat" href="#"><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></h3>
+    <h3 class="btn btn-flat" href="#"><%= link_to "Home", root_path %></h3>
+  </div>
+</div>
+
+<% @bookmarks.each do |bookmark| %>
+  <div class="card-product">
+    <img src=" <%= bookmark.movie.poster_url%>" />
+    <div class="card-product-infos">
+      <h2><%= bookmark.movie.title %></h2>
+      <p>Some description comming soon.</p>
+      <div class="list-delete">
+        <%= link_to bookmark_path(bookmark),
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
-   </li>
-   <% end %>
-</ol>
+            data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt trash"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
