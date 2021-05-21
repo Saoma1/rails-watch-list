@@ -1,0 +1,17 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://suitelife.com/wp-content/uploads/2017/12/empty-cinema.jpg);">
+  <div class="container">
+    <h1><strong>Your, favorite movies in one place!</strong></h1>
+  </div>
+</div>
+
+<ol>
+   <% @lists.each do |list| %>
+   <li><%= link_to list.name, list_path(list) %>
+    <%= link_to "Delete",
+            list_path(list),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+   </li>
+   <% end %>
+</ol>
+<p><%= link_to "+ create new list", new_list_path %></p>
