@@ -1,18 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://suitelife.com/wp-content/uploads/2017/12/empty-cinema.jpg);">
   <div class="container">
-    <h1><strong>Your, favorite movies in one place!</strong></h1>
+    <h1><strong>Your favorite movies in one place!</strong></h1>
     <h3 class="btn btn-flat" href="#"><%= link_to "Create a list now", new_list_path %></h3>
   </div>
 </div>
 
 <div class="cards">
   <% @lists.each do |list| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPkMltGvqOai2ZH06ptcRNIMzO4V2YMzHuhJSsdtxnCbg3HnnXG-UBYqp3kbVc4mQ4ZNk&usqp=CAU)">
       <div><%= link_to list.name, list_path(list) %></div>
-      <div class="list-delete"><%= link_to "Delete list",
-            list_path(list),
+      <div class="list-delete">
+        <%= link_to list_path(list),
             method: :delete,
-            data: { confirm: "Are you sure?" } %></div>
+            data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt trash"></i>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
