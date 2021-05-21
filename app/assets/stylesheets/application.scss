@@ -11,3 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+a, a:visited, a:hover {
+  color: white;
+  text-decoration: none;
+}

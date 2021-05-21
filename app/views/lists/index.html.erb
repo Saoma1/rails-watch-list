@@ -1,17 +1,18 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://suitelife.com/wp-content/uploads/2017/12/empty-cinema.jpg);">
   <div class="container">
     <h1><strong>Your, favorite movies in one place!</strong></h1>
+    <h3 class="btn btn-flat" href="#"><%= link_to "Create a list now", new_list_path %></h3>
   </div>
 </div>
 
-<ol>
-   <% @lists.each do |list| %>
-   <li><%= link_to list.name, list_path(list) %>
-    <%= link_to "Delete",
+<div class="cards">
+  <% @lists.each do |list| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div><%= link_to list.name, list_path(list) %></div>
+      <div class="list-delete"><%= link_to "Delete list",
             list_path(list),
             method: :delete,
-            data: { confirm: "Are you sure?" } %>
-   </li>
-   <% end %>
-</ol>
-<p><%= link_to "+ create new list", new_list_path %></p>
+            data: { confirm: "Are you sure?" } %></div>
+    </div>
+  <% end %>
+</div>
